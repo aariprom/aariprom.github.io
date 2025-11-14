@@ -16,7 +16,7 @@ cursor 내 터미널에서만 인식이 안되는 문제가 있었다...
 
   Terminal: Show Environment Contributions에서 어떤 extension이 어떤 변수를 주입하는 지 볼 수 있었다.
 
-![](/images/20251115-mspython-debugpy/1.png)
+![](/images/2025-11-15-mspython_debugpy/1.png)
 
   ms-python.debugpy라는 extension이 PATH를 수정하는 부분이 있었는데, 이 부분에 세미콜론이 빠져 문제를 일으킨다는 점이 보였다. 실제로, 아래처럼 마지막 줄의 ollama와 .cursor의 extension이 세미콜론 없이 concatenate되어 인식이 되지 않았던 것으로 보인다.
 
