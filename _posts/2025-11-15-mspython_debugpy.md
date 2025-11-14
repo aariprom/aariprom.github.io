@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: "cursor 내 ms-python.debugpy PATH 문제"
 date: 2025-11-15
 categories: [dev]
