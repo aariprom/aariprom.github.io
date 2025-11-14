@@ -1,7 +1,10 @@
 ---
+layout: default
 title: "random yapping"
 ---
 
+# Welcome
+
 test test test
 
-20251105
+20251115

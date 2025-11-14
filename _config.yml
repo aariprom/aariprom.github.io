@@ -1,0 +1,20 @@
+# Site settings
+title: "random yapping"
+description: "Personal website"
+url: "https://aariprom.github.io"
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+
+# Exclude from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+
