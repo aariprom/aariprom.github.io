@@ -1,22 +1,75 @@
-# Site settings
+# ============================================
+# SITE CONFIGURATION
+# ============================================
+
+# Basic Info
 title: "random yapping"
-description: "whatever comes to mind"
+title_line_1: "Random"
+title_line_2: "Yapping"
+description: "Thoughts on code, curiosity, and the occasional existential crisis."
+author: "aariprom"
 url: "https://aariprom.github.io"
 baseurl: ""
 
-# Build settings
+# Social Links (uncomment and fill in as needed)
+github_username: aariprom
+# email: your@email.com
+# twitter_username: yourhandle
+
+# Build Settings
 markdown: kramdown
-theme: minima
-plugins:
-  - jekyll-feed
+highlighter: rouge
+permalink: /:year/:month/:day/:title/
 future: true
 
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
 
-# Exclude from processing
+# Sass Configuration
+sass:
+  style: compressed
+
+# Kramdown Settings
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+# Collections (optional for future use)
+# collections:
+#   projects:
+#     output: true
+#     permalink: /projects/:name/
+
+# Default Front Matter
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+
+# Exclude from Build
 exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
   - node_modules
   - vendor
+  - .git
+  - .gitignore
+  - _drafts
 
+# Include (for custom directories)
+include:
+  - _pages

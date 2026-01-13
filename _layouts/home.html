@@ -1,0 +1,105 @@
+---
+layout: default
+---
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge animate-in" style="--delay: 0">
+            <span class="badge-dot"></span>
+            <span>Currently exploring</span>
+        </div>
+        <h1 class="hero-title animate-in" style="--delay: 1">
+            <span class="title-line">{{ site.title_line_1 | default: "Random" }}</span>
+            <span class="title-line accent">{{ site.title_line_2 | default: "Yapping" }}</span>
+        </h1>
+        <p class="hero-description animate-in" style="--delay: 2">
+            {{ site.description }}
+        </p>
+        <div class="hero-cta animate-in" style="--delay: 3">
+            <a href="#posts" class="btn btn-primary">
+                <span>Read Posts</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                </svg>
+            </a>
+            <a href="{{ '/about' | relative_url }}" class="btn btn-ghost">About Me</a>
+        </div>
+    </div>
+    <div class="hero-visual animate-in" style="--delay: 2">
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <span class="terminal-dot red"></span>
+                <span class="terminal-dot yellow"></span>
+                <span class="terminal-dot green"></span>
+                <span class="terminal-title">~/thoughts</span>
+            </div>
+            <div class="terminal-body">
+                <div class="terminal-line">
+                    <span class="prompt">$</span>
+                    <span class="command">cat latest.md</span>
+                </div>
+                {% assign latest = site.posts.first %}
+                {% if latest %}
+                <div class="terminal-output">
+                    <span class="output-title">{{ latest.title }}</span>
+                    <span class="output-date">{{ latest.date | date: "%Y.%m.%d" }}</span>
+                </div>
+                {% endif %}
+                <div class="terminal-line">
+                    <span class="prompt">$</span>
+                    <span class="cursor">_</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="posts" class="posts-section">
+    <div class="section-header animate-in" style="--delay: 4">
+        <h2 class="section-title">Latest Posts</h2>
+        <a href="{{ '/archive' | relative_url }}" class="section-link">
+            View All
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+        </a>
+    </div>
+
+    <div class="posts-grid">
+        {% for post in site.posts limit:6 %}
+        <article class="post-card animate-in" style="--delay: {{ forloop.index | plus: 4 }}">
+            <div class="post-card-inner">
+                <div class="post-meta">
+                    <time datetime="{{ post.date | date_to_xmlschema }}">
+                        {{ post.date | date: "%Y.%m.%d" }}
+                    </time>
+                    {% if post.categories.size > 0 %}
+                    <span class="post-category">{{ post.categories | first }}</span>
+                    {% endif %}
+                </div>
+                <h3 class="post-title">
+                    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                </h3>
+                <p class="post-excerpt">
+                    {{ post.excerpt | strip_html | truncate: 120 }}
+                </p>
+                <div class="post-footer">
+                    <span class="read-time">
+                        {% assign words = post.content | number_of_words %}
+                        {% assign minutes = words | divided_by: 200 %}
+                        {% if minutes < 1 %}1{% else %}{{ minutes }}{% endif %} min read </span>
+                            <a href="{{ post.url | relative_url }}" class="read-more">
+                                Read
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+</section>
+
+{{ content }}

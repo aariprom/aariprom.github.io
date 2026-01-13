@@ -1,8 +1,9 @@
 ---
-layout: default
+layout: post
 title: "cursor 내 ms-python.debugpy PATH 문제"
 date: 2025-11-15
 categories: [dev]
+excerpt: "MS Python extension이 PATH를 망치는 문제와 해결 방법"
 ---
 
 ### 문제

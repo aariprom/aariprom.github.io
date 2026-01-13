@@ -1,0 +1,22 @@
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <span class="footer-logo">⚡</span>
+      <span class="footer-title">{{ site.title }}</span>
+    </div>
+    <div class="footer-links">
+      {% if site.email %}
+      <a href="mailto:{{ site.email }}" class="footer-link">Email</a>
+      {% endif %}
+      {% if site.github_username %}
+      <a href="https://github.com/{{ site.github_username }}" class="footer-link" target="_blank" rel="noopener">GitHub</a>
+      {% endif %}
+      <a href="{{ '/feed.xml' | relative_url }}" class="footer-link">RSS</a>
+    </div>
+    <div class="footer-copy">
+      <span>© {{ 'now' | date: "%Y" }} {{ site.author | default: site.title }}</span>
+      <span class="footer-dot">•</span>
+      <span>Built with Jekyll</span>
+    </div>
+  </div>
+</footer>

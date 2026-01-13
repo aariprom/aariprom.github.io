@@ -5,16 +5,20 @@ _site/
 .jekyll-metadata
 
 # Dependencies
-node_modules/
+Gemfile.lock
 vendor/
+node_modules/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
 
 # OS
 .DS_Store
 Thumbs.db
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
+# Logs
+*.log
