@@ -2,7 +2,7 @@
 layout: post
 title: "Your Post Title Here"
 date: YYYY-MM-DD
-categories: [dev]
+categories: [dev/tools]  # Options: dev/tools, dev/tutorials, dev/debugging, investing, crypto, life, thoughts
 excerpt: "A brief description that appears on the homepage card."
 ---
 

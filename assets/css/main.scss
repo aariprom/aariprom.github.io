@@ -25,10 +25,10 @@
   
   --color-secondary: #ff6b6b;
   
-  // Typography
-  --font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
-  --font-serif: 'Crimson Pro', 'Georgia', serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  // Typography (with Korean/CJK fallbacks)
+  --font-mono: 'JetBrains Mono', 'Noto Sans KR', 'SF Mono', 'Fira Code', monospace;
+  --font-serif: 'Crimson Pro', 'Noto Serif KR', 'Georgia', serif;
+  --font-sans: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
   
   // Spacing
   --space-xs: 0.25rem;
@@ -1029,6 +1029,181 @@ button {
     color: var(--color-accent);
     text-decoration: underline;
     text-underline-offset: 3px;
+  }
+}
+
+// ============================================
+// CATEGORIES PAGE
+// ============================================
+
+.categories-page {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: var(--space-3xl) var(--space-xl);
+}
+
+.categories-header {
+  margin-bottom: var(--space-3xl);
+}
+
+.categories-title {
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+}
+
+.categories-description {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.categories-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+.category-section {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color 0.2s var(--ease-out);
+  
+  &.expanded {
+    border-color: var(--color-accent);
+  }
+  
+  &.expanded .category-header {
+    border-bottom-color: var(--color-accent);
+  }
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-lg) var(--space-xl);
+  background: var(--color-bg-elevated);
+  border-bottom: 1px solid var(--color-border);
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-out);
+  color: inherit;
+  
+  &:hover {
+    background: var(--color-bg-card-hover);
+  }
+}
+
+.category-header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.category-chevron {
+  transition: transform 0.3s var(--ease-out);
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  
+  .expanded & {
+    transform: rotate(90deg);
+    color: var(--color-accent);
+  }
+}
+
+.category-name {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.category-count {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-subtle);
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+}
+
+.category-posts {
+  display: flex;
+  flex-direction: column;
+  max-height: 1000px;
+  overflow: hidden;
+  transition: max-height 0.4s var(--ease-out), opacity 0.3s var(--ease-out);
+  opacity: 1;
+  
+  &.collapsed {
+    max-height: 0;
+    opacity: 0;
+  }
+}
+
+.category-post-item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-lg);
+  padding: var(--space-md) var(--space-xl);
+  border-bottom: 1px solid var(--color-border-subtle);
+  transition: all 0.2s var(--ease-out);
+  
+  &:last-child {
+    border-bottom: none;
+  }
+  
+  &:hover {
+    background: var(--color-bg-card-hover);
+    padding-left: calc(var(--space-xl) + var(--space-sm));
+    
+    .category-post-title {
+      color: var(--color-accent);
+    }
+  }
+}
+
+.category-post-date {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-subtle);
+  flex-shrink: 0;
+  width: 85px;
+}
+
+.category-post-title {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  transition: color 0.2s;
+}
+
+@media (max-width: 768px) {
+  .categories-page {
+    padding: var(--space-2xl) var(--space-md);
+  }
+  
+  .category-header {
+    padding: var(--space-md);
+  }
+  
+  .category-post-item {
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-md);
+  }
+  
+  .category-post-date {
+    width: auto;
   }
 }
 
